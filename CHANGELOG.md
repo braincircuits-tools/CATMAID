@@ -18,6 +18,10 @@
   startup, advisory locks are now used. This should make the startup of parallel
   CATMAID workers more robust.
 
+- Due to changes in the database schema, migration 82 might take a while to
+  complete. It will rewrite some of the bigger tables in CATMAID. To be on the
+  safe side, make sure to have at least as much free space available on the
+  database partition as the current size of the database.
 
 ### Features and enhancements
 
