@@ -35,7 +35,7 @@ effectively is read-only.
 Physical replication in Postgres performs a byte-by-byte copy of the database,
 based on the Write Ahead Log (WAL). Therefore it is important that both the
 primary server and all replicas run the same Postgres version. CATMAID requires
-Postgres 11 at the moment.
+Postgres 12 at the moment.
 
 Reachability and secure communication
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -150,9 +150,9 @@ Now the data of the primary server has to be copied over using
 ``pg_basebackup``. This has to be done as the ``postgres`` user::
 
   sudo -u postgres pg_basebackup -h my.primary.db.xyz -p 7432 \
-      -P --checkpoint=fast -U replication_user  -D /var/lib/postgresql/11/main/
+      -P --checkpoint=fast -U replication_user  -D /var/lib/postgresql/12/main/
 
-Assuming ``/var/lib/postgresql/11/main/`` is our data directory and
+Assuming ``/var/lib/postgresql/12/main/`` is our data directory and
 ``my.primry.db.xyz`` is the primary database server, listening on port ``7432``,
 this command should ask you for the password of the replication user on the
 primary and print progress information. This will take a while, depending on
@@ -161,7 +161,7 @@ your database size, because all the data from the primary server is copied over.
 Of course the replica shouldn't write on its own to the database, instead it
 should follow the primary. This is done by creating a file named
 ``recovery.conf`` in the Postgres data directory
-(``/var/lib/postgresql/11/main/`` in this example)  with the following content::
+(``/var/lib/postgresql/12/main/`` in this example)  with the following content::
 
   standby_mode          = 'on'
   primary_conninfo      = 'host=my.primary.db.xyz port=7432 user=replication_user password=<password>'
