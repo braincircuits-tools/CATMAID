@@ -188,6 +188,8 @@ class NodesApiTests(CatmaidApiTestCase):
         parsed_response = json.loads(response.content.decode('utf-8'))
         expected_result = [[387, [9030.0, 1480.0, 0.0], 380.131556174964, ["testlabel"]],
                            [403, [7840.0, 2380.0, 0.0], 1135.3413583588, ["Testlabel"]]]
+        print(round_list(expected_result))
+        print(round_list(parsed_response))
         self.assertEqual(round_list(expected_result), round_list(parsed_response))
 
 
