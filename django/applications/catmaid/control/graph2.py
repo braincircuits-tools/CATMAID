@@ -54,6 +54,7 @@ def basic_graph(project_id, skeleton_ids, relations=None,
            'target_rel': target_rel_id})
 
     edges:DefaultDict = defaultdict(partial(defaultdict, make_new_synapse_count_array))
+    print(edges)
     for row in cursor.fetchall():
         edges[row[0]][row[1]][row[2] - 1] += 1
 
