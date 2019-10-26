@@ -850,6 +850,7 @@ class SkeletonsApiTests(CatmaidApiTestCase):
         self.assertEqual(expected_result_nodes, frozenset(parsed_response['nodes']))
         # Since order is not important, check length and matches separately.
         self.assertEqual(len(expected_result_edges), len(parsed_response['edges']))
+        print(parsed_response)
         for row in expected_result_edges:
             self.assertTrue(row in parsed_response['edges'])
 
