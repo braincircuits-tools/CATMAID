@@ -11,11 +11,8 @@ python:
 matrix:
   allow_failures:
   - python: "3.8"
-services:
-  - postgresql
 addons:
   chrome: stable
-  postgresql: 10
   # SAUCE_USERNAME and SAUCE_ACCESS_KEY are defined as part of the Travis
   # project settings. GUI tests will be skipped if these are not defined.
   sauce_connect: true
