@@ -852,6 +852,7 @@ class SkeletonsApiTests(CatmaidApiTestCase):
         self.assertEqual(len(expected_result_edges), len(parsed_response['edges']))
         print(parsed_response)
         for row in expected_result_edges:
+            print(row)
             self.assertTrue(row in parsed_response['edges'])
 
         # Dual split
