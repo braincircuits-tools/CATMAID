@@ -1060,6 +1060,23 @@
     }));
 
     this.addAction(new CATMAID.Action({
+      helpText: "Retrieve skeleton at this location with up- and downstream partners",
+      buttonName: "retrieve",
+      buttonID: "trace_button_retrieve",
+      run: function(e) {
+        if (!CATMAID.mayView()) {
+          return false;
+        }
+        console.log('coordinates are ...', activeStackViewer.x, activeStackViewer.y, activeStackViewer.z);
+        $.ajax({
+          'url': 'https://cloud.braincircuits.io/api/v1/segment/lookup/' + activeStackViewer.x + '/' + activeStackViewer.y + '/' + activeStackViewer.z,
+          'type': 'GET'
+        });
+        return true;
+      }
+    }));
+
+    this.addAction(new CATMAID.Action({
       helpText: "Switch between a terminal and its connector",
       keyShortcuts: { "S": [ "s" ] },
       run: function (e) {
